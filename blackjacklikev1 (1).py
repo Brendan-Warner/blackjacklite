@@ -75,12 +75,12 @@ class player:
     return self.score
   
   def update_score(self, num):#updates the player score
-    score +=num
+    self.score +=num
     
 
   def update_hand(self, card_type, card_num, num):#updates the player hand, then calls update score
     self.hand.update({card_type, card_num})
-    update_score(card_num)
+    self.update_score(card_num)
 
   def update_stands(self):#updates the player stand to be true
     self.stand= true
@@ -107,7 +107,7 @@ class ai(player):#same as player with some functions for the ai specifically.
     i = 0
     for x in self.manip_hand:
       if self.score + x == 21:
-        return_manip(i)
+        self.return_manip(i)
         return
       i++
 
@@ -116,12 +116,12 @@ class ai(player):#same as player with some functions for the ai specifically.
     if self.score > 18:
       number = random.randrange(1,4)
       if number == 1:
-        update_stands()
+        self.update_stands()
       if number == 2 && return_manip_hand_len() > 0:
-        ai_manip_neg():
+        self.ai_manip_neg():
       
     elif self.score < 18 && return_manip_hand_len() > 0:
-      ai_manip_pos()
+      self.ai_manip_pos()
 
 
   def ai_manip_neg():
@@ -133,7 +133,7 @@ class ai(player):#same as player with some functions for the ai specifically.
         j = random.randrange(1,3)
         if j = 1:
           num = i
-          return_manip(num)
+          self.return_manip(num)
       i++
     
 
@@ -147,7 +147,7 @@ def ai_manip_pos():
         j = random.randrange(1,3)
         if j = 1:
           num = i
-          return_manip(num)
+          self.return_manip(num)
       i++
     
 
@@ -160,7 +160,7 @@ class deck:
     
 
   def return_current(self):#returns the current card we are on
-      return this.current
+      return self.current
 
   def shuffle_deck(self):#shuffles the deck at the start.
     
@@ -173,7 +173,7 @@ class deck:
   
   def return_card(self):#returns a card from the deck
     card = {self.all_cards[current]: self.deck[self.all_cards[current]}
-    current++
+    self.current++
     return card
 
 
